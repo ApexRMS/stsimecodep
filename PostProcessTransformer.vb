@@ -494,7 +494,7 @@ Class PostProcessTransformer
 
         Using store As DataStore = Me.Project.Library.CreateDataStore()
 
-            Dim q As String = String.Format(CultureInfo.CurrentCulture,
+            Dim q As String = String.Format(CultureInfo.InvariantCulture,
                 "SELECT * FROM STSim_OutputStratumState WHERE ScenarioID={0}", Me.ResultScenario.Id)
 
             Return store.CreateDataTableFromQuery(q, "OutputStratumState")
@@ -513,7 +513,7 @@ Class PostProcessTransformer
 
         Using store As DataStore = Me.Project.Library.CreateDataStore()
 
-            Dim q As String = String.Format(CultureInfo.CurrentCulture,
+            Dim q As String = String.Format(CultureInfo.InvariantCulture,
                 "SELECT * FROM STSim_OutputTransitionAttribute WHERE ScenarioID={0} AND TransitionAttributeTypeID={1}",
                 Me.ResultScenario.Id, attrId)
 

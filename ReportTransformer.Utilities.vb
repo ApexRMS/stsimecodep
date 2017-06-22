@@ -168,7 +168,7 @@ Partial Class ReportTransformer
     ''' <remarks></remarks>
     Private Function GetOutputDataTable(ByVal store As DataStore) As DataTable
 
-        Dim q As String = String.Format(CultureInfo.CurrentCulture,
+        Dim q As String = String.Format(CultureInfo.InvariantCulture,
             "SELECT * FROM ED_Output WHERE ScenarioID IN({0})",
             Me.CreateActiveResultScenarioFilter())
 
