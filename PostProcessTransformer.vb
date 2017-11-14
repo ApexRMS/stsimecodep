@@ -15,8 +15,6 @@ Class PostProcessTransformer
 
     Public Overrides Sub Transform()
 
-        MyBase.Transform()
-
         If (Me.EcologicalDepartureEnabled()) Then
             Me.CalculateEcologicalDeparture()
         End If

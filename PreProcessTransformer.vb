@@ -34,6 +34,16 @@ Class PreProcessTransformer
     End Sub
 
     ''' <summary>
+    ''' Overrides Transform
+    ''' </summary>
+    ''' <remarks>
+    ''' Just suppress the base class code here
+    ''' </remarks>
+    Public Overrides Sub Transform()
+        Return
+    End Sub
+
+    ''' <summary>
     ''' Creates a row for STSim's Output Options data feed if it is missing
     ''' </summary>
     ''' <remarks></remarks>
