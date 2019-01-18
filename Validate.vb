@@ -1,5 +1,5 @@
 ﻿'************************************************************************************
-' Ecological Departure: A SyncroSim module for doing ecological departure analysis.
+' Ecological Departure: A SyncroSim Package for doing ecological departure analysis.
 '
 ' Copyright © 2009-2015 ApexRMS.
 '

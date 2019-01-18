@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("SyncroSim.STSimEcoDep")>
-<Assembly: AssemblyDescription("Ecological Departure Module")>
+<Assembly: AssemblyDescription("Ecological Departure Package")>
 <Assembly: AssemblyCompany("ApexRMS")>
 <Assembly: AssemblyProduct("SyncroSim.STSimEcoDep")>
 <Assembly: AssemblyCopyright("Copyright © 2007-2018 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.")>
