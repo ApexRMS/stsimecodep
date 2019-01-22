@@ -110,6 +110,22 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SyncroSim.Common">
+      <HintPath>..\..\bin\SyncroSim.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SyncroSim.Common.Forms">
+      <HintPath>..\..\bin\SyncroSim.Common.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SyncroSim.Core">
+      <HintPath>..\..\bin\SyncroSim.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SyncroSim.Core.Forms">
+      <HintPath>..\..\bin\SyncroSim.Core.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -179,7 +195,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="module.config" />
+    <None Include="package.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -209,24 +225,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\CommonForms\SyncroSim.Common.Forms.csproj">
-      <Project>{13919907-3117-49c5-bb13-2a5d4ccefa57}</Project>
-      <Name>SyncroSim.Common.Forms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\SyncroSim.Common.csproj">
-      <Project>{1376529f-fc5a-43e8-8554-8341b4fe2496}</Project>
-      <Name>SyncroSim.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CoreForms\SyncroSim.Core.Forms.csproj">
-      <Project>{ea3a4b6e-d4db-466d-b510-6a38918f2dd8}</Project>
-      <Name>SyncroSim.Core.Forms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Core\SyncroSim.Core.csproj">
-      <Project>{af51a2a0-349a-4a3c-bec2-906e605db6d7}</Project>
-      <Name>SyncroSim.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
