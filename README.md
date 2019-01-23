@@ -1,2 +1,2 @@
-# carep
-A SyncroSim Package for the Caribou Energy Protein Model.
+# stsim-ecodep
+A SyncroSim Package for doing ecological departure analysis.
