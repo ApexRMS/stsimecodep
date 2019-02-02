@@ -1,9 +1,9 @@
-﻿'************************************************************************************
-' Ecological Departure: A SyncroSim Package for doing ecological departure analysis.
+﻿'*************************************************************************************************************************************************
+' stsim-ecodep: SyncroSim Add-On Package (to stsim) for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
 '
-' Copyright © 2009-2015 ApexRMS.
+' Copyright © 2007-2019 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
 '
-'************************************************************************************
+'*************************************************************************************************************************************************
 
 Imports SyncroSim.Core
 Imports SyncroSim.Core.Forms
