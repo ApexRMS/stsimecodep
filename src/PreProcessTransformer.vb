@@ -49,7 +49,7 @@ Class PreProcessTransformer
     ''' <remarks></remarks>
     Private Sub CreateOutputOptionsRowIfNotExist()
 
-        Dim dsoo As DataSheet = Me.ResultScenario.GetDataSheet("STSim_OutputOptions")
+        Dim dsoo As DataSheet = Me.ResultScenario.GetDataSheet(Constants.DATASHEET_STSIM_OUTPUT_OPTIONS)
         Dim droo As DataRow = dsoo.GetDataRow()
 
         If (droo Is Nothing) Then
@@ -93,7 +93,7 @@ Class PreProcessTransformer
 
         If (dro(TRANSITION_ATTRIBUTE_TYPE_ID_COLUMN_NAME) IsNot DBNull.Value) Then
 
-            Dim droo As DataRow = Me.ResultScenario.GetDataSheet("STSim_OutputOptions").GetDataRow()
+            Dim droo As DataRow = Me.ResultScenario.GetDataSheet(Constants.DATASHEET_STSIM_OUTPUT_OPTIONS).GetDataRow()
 
             If (droo("SummaryOutputTA") Is DBNull.Value) Then
 
@@ -141,7 +141,7 @@ Class PreProcessTransformer
     Private Sub NormalizeStateClassOutput()
 
         Dim dro As DataRow = Me.ResultScenario.GetDataSheet(DATASHEET_OPTIONS_NAME).GetDataRow()
-        Dim droo As DataRow = Me.ResultScenario.GetDataSheet("STSim_OutputOptions").GetDataRow()
+        Dim droo As DataRow = Me.ResultScenario.GetDataSheet(Constants.DATASHEET_STSIM_OUTPUT_OPTIONS).GetDataRow()
         Dim tso As Integer = CInt(dro(TIMESTEPS_COLUMN_NAME))
 
         If (droo("SummaryOutputSC") Is DBNull.Value) Then
@@ -199,7 +199,7 @@ Class PreProcessTransformer
         End If
 
         Dim ZeroTotalMessage As Boolean = False
-        Dim StratumDataSheet As DataSheet = Me.Project.GetDataSheet("STSim_Stratum")
+        Dim StratumDataSheet As DataSheet = Me.Project.GetDataSheet(Constants.DATASHEET_STSIM_STRATUM)
         Dim StratumData As DataTable = StratumDataSheet.GetData()
 
         Debug.Assert(StratumData.Rows.Count > 0)

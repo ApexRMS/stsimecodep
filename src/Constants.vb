@@ -8,9 +8,14 @@
 Module Constants
 
     'Data Sheets
-    Public Const DATASHEET_OPTIONS_NAME As String = "ED_Options"
-    Public Const DATASHEET_REFERENCE_CONDITION_NAME As String = "ED_ReferenceCondition"
-    Public Const DATASHEET_OUTPUT_NAME = "ED_Output"
+    Public Const DATASHEET_OPTIONS_NAME As String = "stsim_ecodep__Options"
+    Public Const DATASHEET_REFERENCE_CONDITION_NAME As String = "stsim_ecodep__ReferenceCondition"
+    Public Const DATASHEET_OUTPUT_NAME = "stsim_ecodep__Output"
+    Public Const DATASHEET_STSIM_STRATUM = "stsim__Stratum"
+    Public Const DATASHEET_STSIM_TERMINOLOGY = "stsim__Terminology"
+    Public Const DATASHEET_STSIM_TRANSITION_ATTRIBUTE_TYPE = "stsim__TransitionAttributeType"
+    Public Const DATASHEET_STSIM_RUN_CONTROL = "stsim__RunControl"
+    Public Const DATASHEET_STSIM_OUTPUT_OPTIONS = "stsim__OutputOptions"
 
     'Column names
     Public Const SCENARIO_ID_COLUMN_NAME As String = "ScenarioID"

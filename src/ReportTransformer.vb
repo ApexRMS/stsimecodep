@@ -250,7 +250,7 @@ Class ReportTransformer
     Private Sub PostProcessFinalTable(ByVal dt As DataTable)
 
         Dim d1 As Dictionary(Of Integer, String) = Me.CreateScenarioDictionary()
-        Dim d2 As Dictionary(Of Integer, String) = Me.CreateDefinitionDictionary("STSim_Stratum")
+        Dim d2 As Dictionary(Of Integer, String) = Me.CreateDefinitionDictionary(Constants.STRATUM_ID_COLUMN_NAME)
 
         For Each dr As DataRow In dt.Rows
 

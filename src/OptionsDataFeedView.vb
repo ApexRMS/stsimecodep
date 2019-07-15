@@ -33,7 +33,7 @@ Class OptionsDataFeedView
         End If
 
         Me.SetCheckboxState()
-        Me.MonitorDataSheet("STSim_Terminology", AddressOf Me.OnTerminologyChanged, True)
+        Me.MonitorDataSheet(Constants.DATASHEET_STSIM_TERMINOLOGY, AddressOf Me.OnTerminologyChanged, True)
 
     End Sub
 
@@ -86,7 +86,7 @@ Class OptionsDataFeedView
 
     Private Sub AssignComboValidationTable()
 
-        Dim ds As DataSheet = Me.Project.GetDataSheet("STSim_TransitionAttributeType")
+        Dim ds As DataSheet = Me.Project.GetDataSheet(Constants.DATASHEET_STSIM_TRANSITION_ATTRIBUTE_TYPE)
         Dim dv As New DataView(ds.GetData(), Nothing, ds.ValidationTable.DisplayMember, DataViewRowState.CurrentRows)
 
         If (dv.Count > 0) Then

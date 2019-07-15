@@ -31,7 +31,7 @@ Module Validate
     Public Sub ValidateStratum(ByVal id As Integer, ByVal project As Project)
 
 
-        Dim ds As DataSheet = project.GetDataSheet("STSim_Stratum")
+        Dim ds As DataSheet = project.GetDataSheet(Constants.DATASHEET_STSIM_STRATUM)
         Dim dt As DataTable = ds.GetData()
 
         Dim found As Boolean = False

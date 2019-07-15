@@ -72,7 +72,7 @@ Partial Class ReportTransformer
     ''' <remarks></remarks>
     Private Function GetTimestepUnits() As String
 
-        Dim dr As DataRow = Me.Project.GetDataSheet("STSim_Terminology").GetDataRow()
+        Dim dr As DataRow = Me.Project.GetDataSheet(Constants.DATASHEET_STSIM_TERMINOLOGY).GetDataRow()
 
         If (dr Is Nothing OrElse dr("TimestepUnits") Is DBNull.Value) Then
             Return "Timestep"

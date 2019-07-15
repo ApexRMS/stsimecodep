@@ -462,7 +462,7 @@ Class PostProcessTransformer
     ''' <remarks></remarks>
     Private Function GetSTMaxTimestep() As Integer
 
-        Dim ds As DataSheet = Me.ResultScenario.GetDataSheet("STSim_RunControl")
+        Dim ds As DataSheet = Me.ResultScenario.GetDataSheet(Constants.DATASHEET_STSIM_RUN_CONTROL)
         Dim dr As DataRow = ds.GetDataRow()
 
         Return CInt(dr("MaximumTimestep"))
@@ -476,7 +476,7 @@ Class PostProcessTransformer
     ''' <remarks></remarks>
     Private Function GetSTMinimumTimestep() As Integer
 
-        Dim ds As DataSheet = Me.ResultScenario.GetDataSheet("STSim_RunControl")
+        Dim ds As DataSheet = Me.ResultScenario.GetDataSheet(Constants.DATASHEET_STSIM_RUN_CONTROL)
         Dim dr As DataRow = ds.GetDataRow()
 
         Return CInt(dr("MinimumTimestep"))
@@ -493,7 +493,7 @@ Class PostProcessTransformer
         Using store As DataStore = Me.Project.Library.CreateDataStore()
 
             Dim q As String = String.Format(CultureInfo.InvariantCulture,
-                "SELECT * FROM STSim_OutputStratumState WHERE ScenarioID={0}", Me.ResultScenario.Id)
+                "SELECT * FROM stsim__OutputStratumState WHERE ScenarioID={0}", Me.ResultScenario.Id)
 
             Return store.CreateDataTableFromQuery(q, "OutputStratumState")
 
@@ -512,7 +512,7 @@ Class PostProcessTransformer
         Using store As DataStore = Me.Project.Library.CreateDataStore()
 
             Dim q As String = String.Format(CultureInfo.InvariantCulture,
-                "SELECT * FROM STSim_OutputTransitionAttribute WHERE ScenarioID={0} AND TransitionAttributeTypeID={1}",
+                "SELECT * FROM stsim__OutputTransitionAttribute WHERE ScenarioID={0} AND TransitionAttributeTypeID={1}",
                 Me.ResultScenario.Id, attrId)
 
             Return store.CreateDataTableFromQuery(q, "CumulativeAttributeData")
