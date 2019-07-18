@@ -493,7 +493,7 @@ Class PostProcessTransformer
         Using store As DataStore = Me.Project.Library.CreateDataStore()
 
             Dim q As String = String.Format(CultureInfo.InvariantCulture,
-                "SELECT * FROM stsim__OutputStratumState WHERE ScenarioID={0}", Me.ResultScenario.Id)
+                "SELECT * FROM stsim_OutputStratumState WHERE ScenarioID={0}", Me.ResultScenario.Id)
 
             Return store.CreateDataTableFromQuery(q, "OutputStratumState")
 
@@ -512,7 +512,7 @@ Class PostProcessTransformer
         Using store As DataStore = Me.Project.Library.CreateDataStore()
 
             Dim q As String = String.Format(CultureInfo.InvariantCulture,
-                "SELECT * FROM stsim__OutputTransitionAttribute WHERE ScenarioID={0} AND TransitionAttributeTypeID={1}",
+                "SELECT * FROM stsim_OutputTransitionAttribute WHERE ScenarioID={0} AND TransitionAttributeTypeID={1}",
                 Me.ResultScenario.Id, attrId)
 
             Return store.CreateDataTableFromQuery(q, "CumulativeAttributeData")

@@ -5,6 +5,7 @@
 '
 '*************************************************************************************************************************************************
 
+Imports System.IO
 Imports SyncroSim.Core
 Imports SyncroSim.Core.Forms
 Imports System.Reflection
@@ -41,6 +42,10 @@ Class ReportTransformer
 
         If (Not ValidateForExcel(FinalData)) Then
             Return
+        End If
+
+        If (File.Exists(location)) Then
+            File.Delete(location)
         End If
 
         Me.PostProcessFinalTable(FinalData)
@@ -250,7 +255,7 @@ Class ReportTransformer
     Private Sub PostProcessFinalTable(ByVal dt As DataTable)
 
         Dim d1 As Dictionary(Of Integer, String) = Me.CreateScenarioDictionary()
-        Dim d2 As Dictionary(Of Integer, String) = Me.CreateDefinitionDictionary(Constants.STRATUM_ID_COLUMN_NAME)
+        Dim d2 As Dictionary(Of Integer, String) = Me.CreateDefinitionDictionary(Constants.DATASHEET_STSIM_STRATUM)
 
         For Each dr As DataRow In dt.Rows
 

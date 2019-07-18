@@ -169,10 +169,10 @@ Partial Class ReportTransformer
     Private Function GetOutputDataTable(ByVal store As DataStore) As DataTable
 
         Dim q As String = String.Format(CultureInfo.InvariantCulture,
-            "SELECT * FROM ED_Output WHERE ScenarioID IN({0})",
+            "SELECT * FROM stsimecodep_Output WHERE ScenarioID IN({0})",
             Me.CreateActiveResultScenarioFilter())
 
-        Return store.CreateDataTableFromQuery(q, "ED_Output")
+        Return store.CreateDataTableFromQuery(q, "stsimecodep_Output")
 
     End Function
 

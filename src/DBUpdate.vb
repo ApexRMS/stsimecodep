@@ -20,7 +20,7 @@ Class DBUpdate
         'Verify that all expected indexes exist after the update because it Is easy to forget to recreate them after 
         'adding a column to an existing table (which requires the table to be recreated if you want to preserve column order.)
 
-        ASSERT_INDEX_EXISTS(store, "stsim_ecodep__Output")
+        ASSERT_INDEX_EXISTS(store, "stsimecodep_Output")
 
 #End If
 
@@ -60,10 +60,10 @@ Class DBUpdate
     ''' </remarks>
     Private Shared Sub ECODEP_0000100(ByVal store As DataStore)
 
-        UpdateProvider.RenameTablesWithPrefix(store, "ED_", "stsim_ecodep__")
+        UpdateProvider.RenameTablesWithPrefix(store, "ED_", "stsimecodep_")
 
         store.ExecuteNonQuery("DROP INDEX IF EXISTS ED_Output_Index")
-        UpdateProvider.CreateIndex(store, "stsim_ecodep__Output", New String() {"ScenarioID", "Iteration", "Timestep", "StratumID"})
+        UpdateProvider.CreateIndex(store, "stsimecodep_Output", New String() {"ScenarioID", "Iteration", "Timestep", "StratumID"})
 
     End Sub
 
