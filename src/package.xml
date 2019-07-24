@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package name="stsimecodep" displayName="Calculates ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class" version="3.2.1" isAddOn="True" extendsPackage="stsim" url="https://github.com/ApexRMS/stsimecodep">
+  <transformers>
+    <transformer name="Primary" isPrimary="True">
+      <runtime>
+        <transformer name="PreProcess"/>
+        <transformer name="PostProcess"/>
+      </runtime>
+      <include>
+        <transformer name="Options"/>
+      </include>
+    </transformer>
+    <transformer name="Options" displayName="Ecological Departure Options">
+      <datafeeds>
+        <datafeed name="Options" displayName="Ecological Departure" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="Options" displayName="ED Options" isSingleRow="True">
+              <columns>
+                <column name="OptionsID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="Timesteps"  dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="1" format="d"/>
+                <column name="TransitionAttributeTypeID" displayName="Transition Attribute" dataType="Integer" validationType="Datasheet" formula1="stsim_TransitionAttributeType"/>
+              </columns>
+            </datasheet>
+            <datasheet name="ReferenceCondition" displayName="ED Reference Conditions">
+              <columns>
+                <column name="ReferenceConditionID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID"  dataType="Integer"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="stsim_Stratum" allowDbNull="False" displayNameSource="stsim_Terminology" displayNameColumn="PrimaryStratumLabel"/>
+                <column name="StateClassID" displayName="State Class" dataType="Integer" validationType="Datasheet" formula1="stsim_StateClass" />
+                <column name="RelativeAmount" displayName="Relative Amount" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" allowDbNull="False"/>
+                <column name="Undesirability" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0.0" formula2="2.0"/>
+                <column name="Threshold" displayName="Threshold Percent" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0.0" formula2="100.0"/>
+              </columns>
+              <validations>
+                <validation validationType="Unique" columns="StratumID|StateClassID"/>
+              </validations>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+      </datafeeds>
+    </transformer>
+    <transformer
+      name="PreProcess"
+      displayName="Ecological Departure Pre-Process"
+      className="SyncroSim.STSimEcoDep.PreProcessTransformer"
+      classAssembly="SyncroSim.STSimEcoDep"
+      extendsTransformer="stsim_Runtime">
+    </transformer>
+    <transformer
+      name="PostProcess"
+      displayName="Ecological Departure Post-Process"
+      className="SyncroSim.STSimEcoDep.PostProcessTransformer"
+      classAssembly="SyncroSim.STSimEcoDep"
+      runOrder="After"
+      extendsTransformer="stsim_Runtime">
+      <datafeeds>
+        <datafeed name="Output" dataScope="Scenario" isOutput="True">
+          <datasheets>
+            <datasheet name="Output" displayName="Ecological Departure">
+              <columns>
+                <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
+                <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="StratumID" dataType="Integer"/>
+                <column name="Departure" dataType="Double"/>
+                <column name="CumulativeAttribute" dataType="Double"/>
+              </columns>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+      </datafeeds>
+    </transformer>
+    <transformer
+      name="Report"
+      displayName="Ecological Departure"
+      className="SyncroSim.STSimEcoDep.ReportTransformer"
+      classAssembly="SyncroSim.STSimEcoDep"
+      isExcelOnlyExport="True">
+    </transformer>
+  </transformers>
+  <views>
+    <view
+      name="OptionsDatafeedView"
+      target="Options"
+      className="SyncroSim.STSimEcoDep.OptionsDataFeedView"
+      classAssembly="SyncroSim.STSimEcoDep"/>
+  </views>
+  <layouts>
+    <layout name="coreforms_ScenarioDatafeeds" appendTo="Advanced">
+      <item name="Options"/>
+    </layout>
+    <layout name="coreforms_ResultTransformers" appendTo="Export|Reports">
+      <item name="Report"/>
+    </layout>
+  </layouts>
+  <updateProvider
+    schemaVersion="100"
+    minPackageVersion="3.2.1"
+    className="SyncroSim.STSimEcoDep.DBUpdate"
+    classAssembly="SyncroSim.STSimEcoDep"/>
+</package>
