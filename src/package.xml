@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<package name="stsimecodep" displayName="Calculates ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class" version="3.2.3" isAddOn="True" extendsPackage="stsim" url="https://github.com/ApexRMS/stsimecodep">
+<package name="stsimecodep" displayName="Calculates ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class" version="3.2.4" isAddOn="True" extendsPackage="stsim" url="https://github.com/ApexRMS/stsimecodep">
   <transformers>
     <transformer name="Primary" isPrimary="True">
       <runtime>
@@ -87,10 +87,10 @@
       classAssembly="SyncroSim.STSimEcoDep"/>
   </views>
   <layouts>
-    <layout name="coreforms_ScenarioDatafeeds" appendTo="Advanced">
+    <layout name="coreforms_ScenarioDatafeeds" appendTo="stsim_Advanced">
       <item name="Options"/>
     </layout>
-    <layout name="coreforms_ResultTransformers" appendTo="Export|Reports">
+    <layout name="coreforms_ResultTransformers" appendTo="stsim_Export|stsim_Reports">
       <item name="Report"/>
     </layout>
   </layouts>
