@@ -490,14 +490,7 @@ Class PostProcessTransformer
     ''' <remarks></remarks>
     Private Function GetOutputStratumStateDataTable() As DataTable
 
-        Using store As DataStore = Me.Project.Library.CreateDataStore()
-
-            Dim q As String = String.Format(CultureInfo.InvariantCulture,
-                "SELECT * FROM stsim_OutputStratumState WHERE ScenarioID={0}", Me.ResultScenario.Id)
-
-            Return store.CreateDataTableFromQuery(q, "OutputStratumState")
-
-        End Using
+        Return Me.ResultScenario.GetDataSheet("stsim_OutputStratumState").GetData()
 
     End Function
 
@@ -509,15 +502,11 @@ Class PostProcessTransformer
     ''' <remarks></remarks>
     Private Function GetAttributeDataTable(ByVal attrId As Integer) As DataTable
 
-        Using store As DataStore = Me.Project.Library.CreateDataStore()
-
-            Dim q As String = String.Format(CultureInfo.InvariantCulture,
-                "SELECT * FROM stsim_OutputTransitionAttribute WHERE ScenarioID={0} AND TransitionAttributeTypeID={1}",
-                Me.ResultScenario.Id, attrId)
-
-            Return store.CreateDataTableFromQuery(q, "CumulativeAttributeData")
-
-        End Using
+        Dim dt As DataTable = Me.ResultScenario.GetDataSheet("stsim_OutputTransitionAttribute").GetData()
+        Dim q As String = String.Format(CultureInfo.InvariantCulture,
+                                        "TransitionAttributeTypeID={0}",
+                                        attrId)
+        Return dt.Select(q).CopyToDataTable()
 
     End Function
 
