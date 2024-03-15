@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<package name="stsimecodep" displayName="Calculates ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class" version="3.3.1" isAddOn="True" extendsPackage="stsim" url="https://docs.stsim.net/">
+<package name="stsimecodep" displayName="SyncroSim Add-On Package (to stsim) for calculating TNC's unified ecological departure from reference conditions in ST-Sim" version="3.3.2" isAddOn="True" extendsPackage="stsim" url="https://docs.stsim.net/">
   <transformers>
     <transformer name="Primary" isPrimary="True">
       <runtime>
