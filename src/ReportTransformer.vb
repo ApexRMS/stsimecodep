@@ -218,9 +218,9 @@ Class ReportTransformer
 
         For Each dr As DataRow In dt.Rows
 
-            Dim sn As Integer = CInt(dr("ScenarioID"))
+            Dim sn As Integer = CInt(dr("ScenarioId"))
             Dim ts As Integer = CInt(dr("Timestep"))
-            Dim st As Integer = CInt(dr("StratumID"))
+            Dim st As Integer = CInt(dr("StratumId"))
             Dim it As Integer = CInt(dr("Iteration"))
             Dim dep As Double = CDbl(dr("Departure"))
             Dim ca As Nullable(Of Double) = Nothing

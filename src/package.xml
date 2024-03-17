@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <package name="stsimecodep" displayName="ST-Sim Ecological Departure" description="Calculates TNC's unified ecological departure from reference conditions in ST-Sim" version="4.0.0" url="https://docs.stsim.net/">
 
+	<builtFor package="stsim" version="4.0.0"/>
+	
+	<dataFeed name="Options" viewClassName="SyncroSim.STSimEcoDep.OptionsDataFeedView" viewClassAssembly="SyncroSim.STSimEcoDep">
+		<dataSheet name="Options"/>
+		<dataSheet name="ReferenceCondition"/>
+	</dataFeed>	
+	
 	<dataSheet name="Options" displayName="Options" isSingleRow="True">
 		<column name="Timesteps"  dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="1" format="d"/>
 		<column name="TransitionAttributeTypeId" displayName="Transition Attribute" dataType="Integer" validationType="Datasheet" formula1="stsim_TransitionAttributeType"/>
@@ -15,29 +22,21 @@
 		<validation validationType="Unique" columns="StratumId|StateClassId"/>
 	</dataSheet>
 
-	<dataFeed name="Options" viewClassName="SyncroSim.STSimEcoDep.OptionsDataFeedView" viewClassAssembly="SyncroSim.STSimEcoDep">
-		<dataSheet name="Options"/>
-		<dataSheet name="ReferenceCondition"/>
-	</dataFeed>
-
 	<dataSheet name="Output" displayName="Ecological Departure" hasIteration="True" hasTimestep="True">
 		<column name="StratumId" dataType="Integer"/>
 		<column name="Departure" dataType="Double"/>
 		<column name="CumulativeAttribute" dataType="Double"/>
 	</dataSheet>
 
-	<transformer
-    name="PreProcess"
-    displayName="Ecological Departure Pre-Process"
-    className="SyncroSim.STSimEcoDep.PreProcessTransformer"
-    classAssembly="SyncroSim.STSimEcoDep">
+	<transformer name="PreProcess" displayName="Ecological Departure Pre-Process" className="SyncroSim.STSimEcoDep.PreProcessTransformer" classAssembly="SyncroSim.STSimEcoDep">
+		<dataSheet name="Options" type="Input"/>
+		<dataSheet name="ReferenceCondition" type="Input"/>
 	</transformer>
 
-	<transformer
-		name="PostProcess"
-		displayName="Ecological Departure Post-Process"
-		className="SyncroSim.STSimEcoDep.PostProcessTransformer"
-		classAssembly="SyncroSim.STSimEcoDep">
+	<transformer name="PostProcess" displayName="Ecological Departure Post-Process" className="SyncroSim.STSimEcoDep.PostProcessTransformer" classAssembly="SyncroSim.STSimEcoDep">
+		<dataSheet name="Options" type="Input"/>
+		<dataSheet name="ReferenceCondition" type="Input"/>
+		<dataSheet name="Output" type="Output"/>		
 	</transformer>
 
 	<transformer

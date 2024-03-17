@@ -18,10 +18,9 @@ Module Constants
     Public Const DATASHEET_STSIM_OUTPUT_OPTIONS = "stsim_OutputOptions"
 
     'Column names
-    Public Const SCENARIO_ID_COLUMN_NAME As String = "ScenarioID"
-    Public Const STRATUM_ID_COLUMN_NAME As String = "StratumID"
-    Public Const STATECLASS_ID_COLUMN_NAME As String = "StateClassID"
-    Public Const TRANSITION_ATTRIBUTE_TYPE_ID_COLUMN_NAME As String = "TransitionAttributeTypeID"
+    Public Const STRATUM_ID_COLUMN_NAME As String = "StratumId"
+    Public Const STATECLASS_ID_COLUMN_NAME As String = "StateClassId"
+    Public Const TRANSITION_ATTRIBUTE_TYPE_ID_COLUMN_NAME As String = "TransitionAttributeTypeId"
     Public Const TIMESTEPS_COLUMN_NAME As String = "Timesteps"
     Public Const TIMESTEP_COLUMN_NAME As String = "Timestep"
     Public Const ITERATION_COLUMN_NAME As String = "Iteration"
