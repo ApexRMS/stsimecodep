@@ -1,7 +1,7 @@
 ﻿'*************************************************************************************************************************************************
-' stsim-ecodep: SyncroSim Add-On Package (to stsim) for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
+' stsimecodep: SyncroSim Package for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
 '
-' Copyright © 2007-2021 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
+' Copyright © 2007-2024 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
 '
 '*************************************************************************************************************************************************
 
@@ -33,8 +33,8 @@ Module Constants
 
     'Excel
     Public Const EXCEL_MAX_ROWS As Integer = 1048576 - 1
-    Public CAPTION_INTERIOR_COLOR As System.Drawing.Color = Drawing.Color.LightGray
-    Public CAPTION_BORDER_COLOR As System.Drawing.Color = Drawing.Color.Gray
-    Public VALUE_BORDER_COLOR As System.Drawing.Color = Drawing.Color.LightGray
+    Public CAPTION_INTERIOR_COLOR As Drawing.Color = Drawing.Color.LightGray
+    Public CAPTION_BORDER_COLOR As Drawing.Color = Drawing.Color.Gray
+    Public VALUE_BORDER_COLOR As Drawing.Color = Drawing.Color.LightGray
 
 End Module

@@ -1,7 +1,7 @@
 ﻿'*************************************************************************************************************************************************
-' stsim-ecodep: SyncroSim Add-On Package (to stsim) for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
+' stsimecodep: SyncroSim Package for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
 '
-' Copyright © 2007-2021 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
+' Copyright © 2007-2024 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
 '
 '*************************************************************************************************************************************************
 
@@ -170,7 +170,7 @@ Partial Class ReportTransformer
 
         Dim q As String = String.Format(CultureInfo.InvariantCulture,
             "SELECT * FROM stsimecodep_Output WHERE ScenarioID IN({0})",
-            Me.CreateActiveResultScenarioFilter())
+            Me.ExportCreateActiveResultScenarioFilter())
 
         Return store.CreateDataTableFromQuery(q, "stsimecodep_Output")
 
