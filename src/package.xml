@@ -56,4 +56,9 @@
 		<item name="Report"/>
 	</layout>
 
+	<updateProvider
+		className="SyncroSim.STSimEcoDep.DBUpdate"
+		classAssembly="SyncroSim.STSimEcoDep">
+	</updateProvider>
+
 </package>
