@@ -10,8 +10,8 @@ Imports SyncroSim.Core
 Class DBUpdate
     Inherits DotNetUpdateProvider
 
-    <Update(0.101, "This update converts the schema from v2 to v3")>
-    Public Shared Sub Update_0_101(ByVal store As DataStore)
+    <Update(4.0, "This update converts the schema from v2 to v3")>
+    Public Shared Sub Update_4_000(ByVal store As DataStore)
 
         'We have no v3 updates to do, but since we have an update provider we need to delete our
         'legacy schema table stsimecodep_Schema.
