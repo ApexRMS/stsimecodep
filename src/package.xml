@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<package name="stsimecodep" displayName="ST-Sim Ecological Departure" description="Calculates TNC's unified ecological departure from reference conditions in ST-Sim" version="4.0.0" url="https://docs.stsim.net/">
+<package name="stsimecodep" displayName="ST-Sim Ecological Departure" description="Calculates TNC's unified ecological departure from reference conditions in ST-Sim" version="4.1.0" minSyncroSimVersion="3.1.0" url="https://docs.stsim.net/">
 
-	<builtFor package="stsim" version="4.0.0"/>
+	<builtFor package="stsim" version="4.3.8"/>
 	
 	<dataFeed name="Options" viewClassName="SyncroSim.STSimEcoDep.OptionsDataFeedView" viewClassAssembly="SyncroSim.STSimEcoDep">
 		<dataSheet name="Options"/>
