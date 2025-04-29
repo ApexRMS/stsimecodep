@@ -6,64 +6,17 @@
 '*************************************************************************************************************************************************
 
 Imports SyncroSim.Core
-Imports System.Globalization
 
 Class DBUpdate
-    Inherits UpdateProvider
+    Inherits DotNetUpdateProvider
 
-    Public Overrides Sub PerformUpdate(store As DataStore, currentSchemaVersion As Integer)
+    <Update(4.0, "This update converts the schema from v2 to v3")>
+    Public Shared Sub Update_4_000(ByVal store As DataStore)
 
-        PerformUpdateInternal(store, currentSchemaVersion)
+        'We have no v3 updates to do, but since we have an update provider we need to delete our
+        'legacy schema table stsimecodep_Schema.
 
-#If DEBUG Then
-
-        'Verify that all expected indexes exist after the update because it Is easy to forget to recreate them after 
-        'adding a column to an existing table (which requires the table to be recreated if you want to preserve column order.)
-
-        ASSERT_INDEX_EXISTS(store, "stsimecodep_Output")
-
-#End If
-
-    End Sub
-
-#If DEBUG Then
-
-    Private Shared Sub ASSERT_INDEX_EXISTS(ByVal store As DataStore, ByVal tableName As String)
-
-        If (store.TableExists(tableName)) Then
-
-            Dim IndexName As String = tableName + "_Index"
-            Dim Query As String = String.Format(CultureInfo.InvariantCulture, "SELECT COUNT(name) FROM sqlite_master WHERE type = 'index' AND name = '{0}'", IndexName)
-            Debug.Assert(CInt(store.ExecuteScalar(Query)) = 1)
-
-        End If
-
-    End Sub
-
-#End If
-
-    Private Shared Sub PerformUpdateInternal(store As DataStore, currentSchemaVersion As Integer)
-
-        'Start at 100 for 2.1.x
-        If (currentSchemaVersion < 100) Then
-            ECODEP_0000100(store)
-        End If
-
-    End Sub
-
-    ''' <summary>
-    ''' ECODEP_0000100
-    ''' </summary>
-    ''' <param name="store"></param>
-    ''' <remarks>
-    ''' This update renames the ecological departure tables for the new namespace rules.
-    ''' </remarks>
-    Private Shared Sub ECODEP_0000100(ByVal store As DataStore)
-
-        UpdateProvider.RenameTablesWithPrefix(store, "ED_", "stsimecodep_")
-
-        store.ExecuteNonQuery("DROP INDEX IF EXISTS ED_Output_Index")
-        UpdateProvider.CreateIndex(store, "stsimecodep_Output", New String() {"ScenarioID", "Iteration", "Timestep", "StratumID"})
+        DropTable(store, "stsimecodep_Schema")
 
     End Sub
 

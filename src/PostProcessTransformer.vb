@@ -1,7 +1,7 @@
 ﻿'*************************************************************************************************************************************************
-' stsim-ecodep: SyncroSim Add-On Package (to stsim) for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
+' stsimecodep: SyncroSim Package for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
 '
-' Copyright © 2007-2021 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
+' Copyright © 2007-2024 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
 '
 '*************************************************************************************************************************************************
 
@@ -49,8 +49,8 @@ Class PostProcessTransformer
 
         dt.Columns.Add(New DataColumn("Iteration", GetType(Integer)))
         dt.Columns.Add(New DataColumn("Timestep", GetType(Integer)))
-        dt.Columns.Add(New DataColumn("StratumID", GetType(Integer)))
-        dt.Columns.Add(New DataColumn("StateClassID", GetType(Integer)))
+        dt.Columns.Add(New DataColumn("StratumId", GetType(Integer)))
+        dt.Columns.Add(New DataColumn("StateClassId", GetType(Integer)))
         dt.Columns.Add(New DataColumn("Amount", GetType(Double)))
         dt.Columns.Add(New DataColumn("StratumAmount", GetType(Double)))
         dt.Columns.Add(New DataColumn("Percent", GetType(Double)))
@@ -89,8 +89,8 @@ Class PostProcessTransformer
             End If
 
             Dim iteration As Integer = CInt(dr("Iteration"))
-            Dim stratumId As Integer = CInt(dr("StratumID"))
-            Dim stateClassId As Integer = CInt(dr("StateClassID"))
+            Dim stratumId As Integer = CInt(dr("StratumId"))
+            Dim stateClassId As Integer = CInt(dr("StateClassId"))
             Dim amount As Double = CDbl(dr("Amount"))
 
             Dim key As String = CreateKey(iteration, OSSTimestep, stratumId, stateClassId)
@@ -119,8 +119,8 @@ Class PostProcessTransformer
 
             NewRow("Iteration") = psd.iteration
             NewRow("Timestep") = psd.timesetep
-            NewRow("StratumID") = psd.StratumId
-            NewRow("StateClassID") = psd.StateClassId
+            NewRow("StratumId") = psd.StratumId
+            NewRow("StateClassId") = psd.StateClassId
             NewRow("Amount") = psd.Amount
 
             dt.Rows.Add(NewRow)
@@ -142,7 +142,7 @@ Class PostProcessTransformer
 
             Dim it As Integer = CInt(dr("Iteration"))
             Dim ts As Integer = CInt(dr("Timestep"))
-            Dim st As Integer = CInt(dr("StratumID"))
+            Dim st As Integer = CInt(dr("StratumId"))
             Dim am As Double = CDbl(dr("Amount"))
             Dim k As String = CreateKey(it, ts, st)
 
@@ -158,7 +158,7 @@ Class PostProcessTransformer
 
             Dim it As Integer = CInt(dr("Iteration"))
             Dim ts As Integer = CInt(dr("Timestep"))
-            Dim st As Integer = CInt(dr("StratumID"))
+            Dim st As Integer = CInt(dr("StratumId"))
             Dim k As String = CreateKey(it, ts, st)
 
             dr("StratumAmount") = dict(k)
@@ -203,8 +203,8 @@ Class PostProcessTransformer
 
         For Each dr As DataRow In dt.Rows
 
-            Dim st As Integer = CInt(dr("StratumID"))
-            Dim sc As Integer = CInt(dr("StateClassID"))
+            Dim st As Integer = CInt(dr("StratumId"))
+            Dim sc As Integer = CInt(dr("StateClassId"))
             Dim k As String = CreateKey(st, sc)
 
             If (dict.ContainsKey(k)) Then
@@ -292,7 +292,7 @@ Class PostProcessTransformer
 
             Dim it As Integer = CInt(dr("Iteration"))
             Dim ts As Integer = CInt(dr("Timestep"))
-            Dim st As Integer = CInt(dr("StratumID"))
+            Dim st As Integer = CInt(dr("StratumId"))
             Dim min As Double = CDbl(dr("Minimum"))
             Dim percent As Double = CDbl(dr("Percent"))
             Dim adjustment As Double = 0.0
@@ -372,7 +372,14 @@ Class PostProcessTransformer
             End If
 
             Debug.Assert(Not Double.IsNaN(dep))
-            edout.Rows.Add({it, ts, st, dep, ca})
+
+            Dim dr As DataRow = edout.NewRow()
+            dr("Iteration") = it
+            dr("Timestep") = ts
+            dr("StratumId") = st
+            dr("Departure") = dep
+            dr("CumulativeAttribute") = ca
+            edout.Rows.Add(dr)
 
         Next
 
@@ -393,7 +400,7 @@ Class PostProcessTransformer
         End If
 
         dt.Columns.Add(New DataColumn("CumulativeAmount", GetType(Double)))
-        Dim dv As New DataView(dt, Nothing, "Iteration,StratumID,Timestep", DataViewRowState.CurrentRows)
+        Dim dv As New DataView(dt, Nothing, "Iteration,StratumId,Timestep", DataViewRowState.CurrentRows)
 
         Dim ThisIt As Integer = -1
         Dim ThisSt As Integer = -1
@@ -404,7 +411,7 @@ Class PostProcessTransformer
             Dim dr As DataRow = drv.Row
 
             Dim it As Integer = CInt(dr("Iteration"))
-            Dim st As Integer = CInt(dr("StratumID"))
+            Dim st As Integer = CInt(dr("StratumId"))
             Dim am As Double = CDbl(dr("Amount"))
 
             If (it <> ThisIt Or st <> ThisSt) Then
@@ -425,7 +432,7 @@ Class PostProcessTransformer
 
             Dim it As Integer = CInt(dr("Iteration"))
             Dim ts As Integer = CInt(dr("Timestep"))
-            Dim st As Integer = CInt(dr("StratumID"))
+            Dim st As Integer = CInt(dr("StratumId"))
             Dim am As Double = CDbl(dr("CumulativeAmount"))
             Dim k As String = CreateKey(it, ts, st)
 
@@ -504,7 +511,7 @@ Class PostProcessTransformer
 
         Dim dt As DataTable = Me.ResultScenario.GetDataSheet("stsim_OutputTransitionAttribute").GetData()
         Dim q As String = String.Format(CultureInfo.InvariantCulture,
-                                        "TransitionAttributeTypeID={0}",
+                                        "TransitionAttributeTypeId={0}",
                                         attrId)
         Return dt.Select(q).CopyToDataTable()
 

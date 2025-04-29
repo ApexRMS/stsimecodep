@@ -1,14 +1,14 @@
 ﻿'*************************************************************************************************************************************************
-' stsim-ecodep: SyncroSim Add-On Package (to stsim) for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
+' stsimecodep: SyncroSim Package for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
 '
-' Copyright © 2007-2021 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
+' Copyright © 2007-2024 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
 '
 '*************************************************************************************************************************************************
 
 Imports System.Drawing
 Imports Microsoft.Office.Interop.Excel
 Imports System.Runtime.InteropServices
-Imports SyncroSim.Common.Forms
+Imports SyncroSim.Apex.Forms
 
 Partial Class ReportTransformer
 
@@ -20,7 +20,7 @@ Partial Class ReportTransformer
     ''' <param name="maxIteration">The maximum iteration</param>
     ''' <param name="fileName">The file name for the report</param>
     ''' <remarks></remarks>
-    Private Shared Sub ExportToExcel(
+    Private Shared Sub ExcelExport(
         ByVal dt As System.Data.DataTable,
         ByVal attributeSpecified As Boolean,
         ByVal maxIteration As Integer,

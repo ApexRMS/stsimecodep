@@ -1,7 +1,7 @@
 ﻿'*************************************************************************************************************************************************
-' stsim-ecodep: SyncroSim Add-On Package (to stsim) for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
+' stsimecodep: SyncroSim Package for calculating ecological departure in ST-Sim using the LANDFIRE Fire Regime Condition Class.
 '
-' Copyright © 2007-2021 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
+' Copyright © 2007-2024 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
 '
 '*************************************************************************************************************************************************
 
@@ -49,7 +49,7 @@ Class ReportTransformer
         End If
 
         Me.PostProcessFinalTable(FinalData)
-        ExportToExcel(FinalData, AttributeSpecified, MaxIteration, location)
+        ExcelExport(FinalData, AttributeSpecified, MaxIteration, location)
 
     End Sub
 
@@ -218,9 +218,9 @@ Class ReportTransformer
 
         For Each dr As DataRow In dt.Rows
 
-            Dim sn As Integer = CInt(dr("ScenarioID"))
+            Dim sn As Integer = CInt(dr("ScenarioId"))
             Dim ts As Integer = CInt(dr("Timestep"))
-            Dim st As Integer = CInt(dr("StratumID"))
+            Dim st As Integer = CInt(dr("StratumId"))
             Dim it As Integer = CInt(dr("Iteration"))
             Dim dep As Double = CDbl(dr("Departure"))
             Dim ca As Nullable(Of Double) = Nothing
